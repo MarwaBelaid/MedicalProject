@@ -1061,8 +1061,9 @@ public class patient extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        // TODO add your handling code here:
-     //Ajouter presciption  
+        
+            DBconnect db = new DBconnect("root",""); // our object
+
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void identificateurPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_identificateurPActionPerformed
