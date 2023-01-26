@@ -12,7 +12,7 @@ import java.util.Date;
 
 /**
  *
- * @author Zohra
+ * @author 
  */
 public class analyse extends javax.swing.JFrame {
 
