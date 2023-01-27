@@ -14,6 +14,7 @@ public class ModifierP extends javax.swing.JFrame {
      * Creates new form ModifierP
      */
     public ModifierP() {
+        //Initialiser
         initComponents();
     }
 
