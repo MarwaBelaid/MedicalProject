@@ -288,7 +288,20 @@ public class Historique_journeee extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
         System.exit(0);
-    }                                        
+    }   
+
+ private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        new historique_journee().setVisible(true);
+        this.setVisible(false);
+    }   
+
+	// patients.java
+private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        new historique_mois().setVisible(true);
+        this.setVisible(false);
+}                                     
 
     /**
      * @param args the command line arguments
