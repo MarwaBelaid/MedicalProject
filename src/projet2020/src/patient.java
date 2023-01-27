@@ -953,7 +953,11 @@ public class patient extends javax.swing.JFrame {
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
-        //Reset
+        //initialisation champs 
+         // TODO add your handling code here:
+        identificateur.setText("");
+        date.setText("");
+        diagnostique.setText("");
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateActionPerformed
