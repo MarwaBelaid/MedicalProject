@@ -1065,6 +1065,12 @@ public class patient extends javax.swing.JFrame {
         DBconnect db = new DBconnect("root","");
         try{// our object
         db.connect();
+         if(zohra.isSelected()){
+            db.getStatement().executeUpdate("INSERT INTO presciption  VALUES ('"+identificateurP.getText()+"',ZOHRA LOUATI', '"+identificateur.getText()+"') ");
+          }else 
+          {
+            db.getStatement().executeUpdate("INSERT INTO presciption  VALUES ('"+identificateurP.getText()+"',OUSSEMA BOUHALI', '"+identificateur.getText()+"') ");
+             }
          db.closeConnection();
         }catch(SQLException se){
             se.printStackTrace();
