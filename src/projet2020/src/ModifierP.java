@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import projet2020.DBconnect;
 import projet2020.analyse;
+import projet2020.cabinet;
 import projet2020.home;
 import projet2020.patients;
 
@@ -367,6 +368,8 @@ public class ModifierP extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        new cabinet().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
