@@ -1114,7 +1114,7 @@ public class patient extends javax.swing.JFrame {
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
          // TODO add your handling code here:
         DBconnect db = new DBconnect("root","");
-        try{// our object
+        try{
         db.connect();
          if(zohra.isSelected()){
             db.getStatement().executeUpdate("INSERT INTO presciption  VALUES ('"+identificateurP.getText()+"',ZOHRA LOUATI', '"+identificateur.getText()+"') ");
@@ -1128,7 +1128,7 @@ public class patient extends javax.swing.JFrame {
          db.closeConnection();
         }catch(SQLException se){
             se.printStackTrace();
-            //sysy
+           
         }catch(Exception e){
             e.printStackTrace();
         }
