@@ -1071,6 +1071,9 @@ public class patient extends javax.swing.JFrame {
           {
             db.getStatement().executeUpdate("INSERT INTO presciption  VALUES ('"+identificateurP.getText()+"',OUSSEMA BOUHALI', '"+identificateur.getText()+"') ");
              }
+         if(boxMedicament.isSelected()){  
+             db.getStatement().executeUpdate("INSERT INTO medicament   VALUES ('"+nomMedicament.getText()+"' , '"+posologie.getText()+"') ;");   
+             }
          db.closeConnection();
         }catch(SQLException se){
             se.printStackTrace();
