@@ -940,6 +940,34 @@ public class patient extends javax.swing.JFrame {
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
 
       //Search patient
+      //Ajout Nermine
+       int num=Integer.parseInt(numDossier.getText()) ;
+        boolean empty=true;
+/// CONNEXION  DB
+// AFFICHAGE FORMULAIRE
+        DBconnect db = new DBconnect("root",""); // our object
+        try{
+            db.connect();
+            ResultSet rs =db.getStatement().executeQuery("SELECT * FROM dossiermedicale WHERE ref = "+num);
+            while(rs.next()){
+                empty=false;
+                    nomPrenom.setText(rs.getString("nom")+" "+rs.getString("prenom"));
+                    dateNaiss.setText(rs.getString("dateNais"));
+                    tel.setText(rs.getString("tel"));
+                    cin.setText(rs.getString("cin"));
+                    genre.setText(rs.getString("genre"));
+            }
+            if(empty){
+//                        JOptionPane.showMessageDialog(null, " patient non existant !!\n");
+                    new patientNonExistant().setVisible(true); 
+            }
+            rs.close();
+            db.closeConnection();
+        }catch(SQLException se){
+            se.printStackTrace();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
