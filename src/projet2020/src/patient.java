@@ -945,6 +945,29 @@ public class patient extends javax.swing.JFrame {
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
        // search consultation
+       
+              //Modif Nermine
+          int num=Integer.parseInt(numDossier.getText()) ;
+        // AFFICHAGE HISTORIQUE TABLEAU
+        DBconnect db = new DBconnect("root",""); // our object
+         try{
+            db.connect();
+            ResultSet rstab=db.getStatement().executeQuery(" SELECT * FROM consulation C, dossiermedicale D WHERE C.ref =D.ref AND D.ref= "+num);
+            while(rstab.next()) {
+                    String id=String.valueOf(rstab.getInt("id_consultation"));
+                    String date=rstab.getString("date");
+                    String diagnostique=rstab.getString("diagnostique");
+                    String tbData[] = { id, date, diagnostique };
+                    DefaultTableModel table1 =(DefaultTableModel) jTable1.getModel();
+                    table1.addRow(tbData);
+            }
+            rstab.close();
+            db.closeConnection();
+        }catch(SQLException se){
+            se.printStackTrace();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void identificateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_identificateurActionPerformed
