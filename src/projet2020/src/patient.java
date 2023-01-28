@@ -1061,8 +1061,17 @@ public class patient extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        
-            DBconnect db = new DBconnect("root",""); // our object
+         // TODO add your handling code here:
+        DBconnect db = new DBconnect("root","");
+        try{// our object
+        db.connect();
+         db.closeConnection();
+        }catch(SQLException se){
+            se.printStackTrace();
+            //sysy
+        }catch(Exception e){
+            e.printStackTrace();
+        }
 
     }//GEN-LAST:event_jButton13ActionPerformed
 
