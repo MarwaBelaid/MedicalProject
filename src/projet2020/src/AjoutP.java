@@ -458,6 +458,9 @@ public class AjoutP extends javax.swing.JFrame {
         cin.setText("");
         nom.setText("");
         prenom.setText("");
+        dateNaiss.setText("");
+        genre.setText("");
+        tel.setText("");
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
