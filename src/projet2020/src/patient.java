@@ -1074,6 +1074,9 @@ public class patient extends javax.swing.JFrame {
          if(boxMedicament.isSelected()){  
              db.getStatement().executeUpdate("INSERT INTO medicament   VALUES ('"+nomMedicament.getText()+"' , '"+posologie.getText()+"') ;");   
              }
+          if(boxAnalyse.isSelected()){
+                 db.getStatement().executeUpdate("INSERT INTO analyse  VALUES ('"+intitule.getText()+"') ;");   
+             }
          db.closeConnection();
         }catch(SQLException se){
             se.printStackTrace();
