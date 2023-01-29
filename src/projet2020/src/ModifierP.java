@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import projet2020.DBconnect;
 import projet2020.home;
+import projet2020.patients;
 
 /**
  *
@@ -110,6 +111,11 @@ public class ModifierP extends javax.swing.JFrame {
         jButton2.setActionCommand("                           Patients");
         jButton2.setMaximumSize(new java.awt.Dimension(181, 44));
         jButton2.setMinimumSize(new java.awt.Dimension(181, 44));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(7, 191, 145));
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -443,6 +449,12 @@ public class ModifierP extends javax.swing.JFrame {
         new home().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        new patients().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
