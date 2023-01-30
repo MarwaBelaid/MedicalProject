@@ -4,6 +4,8 @@
  */
 package projet2020.src;
 
+import projet2020.DBconnect;
+
 /**
  *
  * @author lenovo
@@ -356,7 +358,7 @@ public class ModifierP extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-       
+       DBconnect db = new DBconnect("root",""); // our object
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
