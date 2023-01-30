@@ -1128,6 +1128,9 @@ public class patient extends javax.swing.JFrame {
           if(boxAnalyse.isSelected()){
                  db.getStatement().executeUpdate("INSERT INTO analyse  VALUES ('"+intitule.getText()+"') ;");   
              }
+          if(boxRadio.isSelected()){
+                 db.getStatement().executeUpdate("INSERT INTO actradio   VALUES ('"+radio.getText()+"') ;");   
+             }
          db.closeConnection();
         }catch(SQLException se){
             se.printStackTrace();
