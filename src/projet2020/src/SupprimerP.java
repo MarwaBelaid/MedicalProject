@@ -7,6 +7,7 @@ package projet2020.src;
 /**
  *
  * @author Zohra
+ * Debut travail de la classe suppresssion 
  */
 public class SupprimerP extends javax.swing.JFrame {
 
