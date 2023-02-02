@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import projet2020.DBconnect;
+import projet2020.home;
 
 /**
  *
@@ -95,6 +96,11 @@ public class ModifierP extends javax.swing.JFrame {
         jButton1.setText("Tableau de bord");
         jButton1.setMaximumSize(new java.awt.Dimension(181, 44));
         jButton1.setMinimumSize(new java.awt.Dimension(181, 44));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(7, 191, 145));
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -430,6 +436,12 @@ public class ModifierP extends javax.swing.JFrame {
         genre.setText("");
         tel.setText("");
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        new home().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
