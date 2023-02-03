@@ -15,7 +15,7 @@ import projet2020.patients;
 
 /**
  *
- * @author lenovo
+ * @author Marwa
  */
 public class ModifierP extends javax.swing.JFrame {
 
