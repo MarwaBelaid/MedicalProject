@@ -368,10 +368,47 @@ public class ModifierP extends javax.swing.JFrame {
          int cpt=0;
         DBconnect db = new DBconnect("root",""); // our object
          try{
-//             db.getStatement().executeUpdate("UPDATE dossiermedicale SET cin='"+cin+"',' "+nom+"'"+prenom+"'"+dateNaiss+"'"+genre+"'"+tel+"';");
             db.connect();
             ResultSet rs=db.getStatement().executeQuery(" SELECT * FROM dossiermedicale  WHERE  ref= "+numero);
-            
+            while(rs.next()) {
+                    if( ! cin.getText().equals("") ) {
+                        cpt++;
+                        db.getStatement().executeUpdate("UPDATE dossiermedicale  SET cin='"+cin.getText()+"'WHERE ref="+numero);
+                    }else{
+                        cin.setText(rs.getString("cin"));
+                    }
+                    if( ! nom.getText().equals("")) {
+                        cpt++;
+                        db.getStatement().executeUpdate("UPDATE dossiermedicale  SET nom='"+nom.getText()+"'WHERE ref="+numero);
+                    }else{
+                        nom.setText(rs.getString("nom"));
+                    }
+                    if( ! prenom.getText().equals("")) {
+                        cpt++;
+                        db.getStatement().executeUpdate("UPDATE dossiermedicale  SET prenom='"+prenom.getText()+"'WHERE ref="+numero);
+                    }else{
+                        prenom.setText(rs.getString("prenom"));
+                    }
+                    if( ! dateNaiss.getText().equals("")) {
+                        cpt++;
+                        db.getStatement().executeUpdate("UPDATE dossiermedicale  SET dateNais='"+dateNaiss.getText()+"'WHERE ref="+numero);
+                    }else{
+                        dateNaiss.setText(rs.getString("dateNais"));
+                    }
+                    if( ! tel.getText().equals("")) {
+                        cpt++;
+                        db.getStatement().executeUpdate("UPDATE dossiermedicale  SET tel='"+tel.getText()+"'WHERE ref="+numero);
+                    }else{
+                        tel.setText(rs.getString("tel"));
+                    }
+                    if( ! genre.getText().equals("")) {
+                        cpt++;
+                        db.getStatement().executeUpdate("UPDATE dossiermedicale  SET genre='"+genre.getText()+"'WHERE ref="+numero);
+                    }else{
+                        genre.setText(rs.getString("genre"));
+                    }
+                   
+            }
        }catch(SQLException se){
             se.printStackTrace();
         }catch(Exception e){
