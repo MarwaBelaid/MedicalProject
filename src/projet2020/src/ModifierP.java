@@ -15,7 +15,7 @@ import projet2020.patients;
 
 /**
  *
- * @author Marwa Belaid
+ * @author Marwa Belaid modifier
  */
 public class ModifierP extends javax.swing.JFrame {
 
