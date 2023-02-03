@@ -200,7 +200,7 @@ public class patient extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -544,22 +544,22 @@ public class patient extends javax.swing.JFrame {
             }
         });
 
-        label1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        label1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         label1.setText("Nom Medicament :");
 
-        label2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        label2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         label2.setText("Posologie :");
 
-        label3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        label3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         label3.setText("Intitule :");
 
-        label4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        label4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         label4.setText("Type Radio:");
 
-        label5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        label5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         label5.setText("Nom Medecin:");
 
-        label6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        label6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         label6.setText("Specialite :");
 
         nomMedicament.addActionListener(new java.awt.event.ActionListener() {
@@ -737,10 +737,10 @@ public class patient extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel12Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel25)
@@ -940,11 +940,62 @@ public class patient extends javax.swing.JFrame {
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
 
       //Search patient
+      //Ajout Nermine
+       int num=Integer.parseInt(numDossier.getText()) ;
+        boolean empty=true;
+/// CONNEXION  DB
+// AFFICHAGE FORMULAIRE
+        DBconnect db = new DBconnect("root",""); // our object
+        try{
+            db.connect();
+            ResultSet rs =db.getStatement().executeQuery("SELECT * FROM dossiermedicale WHERE ref = "+num);
+            while(rs.next()){
+                empty=false;
+                    nomPrenom.setText(rs.getString("nom")+" "+rs.getString("prenom"));
+                    dateNaiss.setText(rs.getString("dateNais"));
+                    tel.setText(rs.getString("tel"));
+                    cin.setText(rs.getString("cin"));
+                    genre.setText(rs.getString("genre"));
+            }
+            if(empty){
+//                        JOptionPane.showMessageDialog(null, " patient non existant !!\n");
+                    new patientNonExistant().setVisible(true); 
+            }
+            rs.close();
+            db.closeConnection();
+        }catch(SQLException se){
+            se.printStackTrace();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
        // search consultation
+       
+              //Modif Nermine
+          int num=Integer.parseInt(numDossier.getText()) ;
+        // AFFICHAGE HISTORIQUE TABLEAU
+        DBconnect db = new DBconnect("root",""); // our object
+         try{
+            db.connect();
+            ResultSet rstab=db.getStatement().executeQuery(" SELECT * FROM consulation C, dossiermedicale D WHERE C.ref =D.ref AND D.ref= "+num);
+            while(rstab.next()) {
+                    String id=String.valueOf(rstab.getInt("id_consultation"));
+                    String date=rstab.getString("date");
+                    String diagnostique=rstab.getString("diagnostique");
+                    String tbData[] = { id, date, diagnostique };
+                    DefaultTableModel table1 =(DefaultTableModel) jTable1.getModel();
+                    table1.addRow(tbData);
+            }
+            rstab.close();
+            db.closeConnection();
+        }catch(SQLException se){
+            se.printStackTrace();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void identificateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_identificateurActionPerformed
@@ -953,7 +1004,11 @@ public class patient extends javax.swing.JFrame {
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
-        //Reset
+        //initialisation champs 
+         // TODO add your handling code here:
+        identificateur.setText("");
+        date.setText("");
+        diagnostique.setText("");
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateActionPerformed
@@ -1057,8 +1112,36 @@ public class patient extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        // TODO add your handling code here:
-     //Ajouter presciption  
+         // TODO add your handling code here:
+        DBconnect db = new DBconnect("root","");
+        try{
+        db.connect();
+         if(zohra.isSelected()){
+            db.getStatement().executeUpdate("INSERT INTO presciption  VALUES ('"+identificateurP.getText()+"',ZOHRA LOUATI', '"+identificateur.getText()+"') ");
+          }else 
+          {
+            db.getStatement().executeUpdate("INSERT INTO presciption  VALUES ('"+identificateurP.getText()+"',OUSSEMA BOUHALI', '"+identificateur.getText()+"') ");
+             }
+         if(boxMedicament.isSelected()){  
+             db.getStatement().executeUpdate("INSERT INTO medicament   VALUES ('"+nomMedicament.getText()+"' , '"+posologie.getText()+"') ;");   
+             }
+          if(boxAnalyse.isSelected()){
+                 db.getStatement().executeUpdate("INSERT INTO analyse  VALUES ('"+intitule.getText()+"') ;");   
+             }
+          if(boxRadio.isSelected()){
+                 db.getStatement().executeUpdate("INSERT INTO actradio   VALUES ('"+radio.getText()+"') ;");   
+             }
+          if(boxEnvoi.isSelected()){
+              db.getStatement().executeUpdate("INSERT INTO envoispecialiste (medecin,specialite) VALUES ('"+nomMedecin.getText()+"' , '"+specialite.getText()+"') ;");
+                         }
+          db.closeConnection();
+        }catch(SQLException se){
+            se.printStackTrace();
+           
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void identificateurPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_identificateurPActionPerformed
