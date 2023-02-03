@@ -409,6 +409,10 @@ public class ModifierP extends javax.swing.JFrame {
                     }
                    
             }
+             if(cpt==0){
+                        JOptionPane.showMessageDialog(null, " veuillez entrez les modification ou verifier le numro du dossier !!\n");
+            }
+            rs.close();
        }catch(SQLException se){
             se.printStackTrace();
         }catch(Exception e){
