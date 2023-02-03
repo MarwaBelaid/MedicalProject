@@ -1132,7 +1132,7 @@ public class patient extends javax.swing.JFrame {
                  db.getStatement().executeUpdate("INSERT INTO actradio   VALUES ('"+radio.getText()+"') ;");   
              }
           if(boxEnvoi.isSelected()){
-              db.getStatement().executeUpdate("INSERT INTO envoispecialiste (specialite,medecin) VALUES ('"+nomMedecin.getText()+"' , '"+specialite.getText()+"') ;");
+              db.getStatement().executeUpdate("INSERT INTO envoispecialiste (medecin,specialite) VALUES ('"+nomMedecin.getText()+"' , '"+specialite.getText()+"') ;");
                          }
           db.closeConnection();
         }catch(SQLException se){
