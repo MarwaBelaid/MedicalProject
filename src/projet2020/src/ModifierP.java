@@ -4,6 +4,9 @@
  */
 package projet2020.src;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import projet2020.DBconnect;
 
 /**
@@ -358,7 +361,22 @@ public class ModifierP extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-       DBconnect db = new DBconnect("root",""); // our object
+       String numero=numDossier.getText();
+        if(numero.equals("")){
+            JOptionPane.showMessageDialog(null, " veuillez entrez numro du dossier !!\n");
+        }
+         int cpt=0;
+        DBconnect db = new DBconnect("root",""); // our object
+         try{
+//             db.getStatement().executeUpdate("UPDATE dossiermedicale SET cin='"+cin+"',' "+nom+"'"+prenom+"'"+dateNaiss+"'"+genre+"'"+tel+"';");
+            db.connect();
+            ResultSet rs=db.getStatement().executeQuery(" SELECT * FROM dossiermedicale  WHERE  ref= "+numero);
+            
+       }catch(SQLException se){
+            se.printStackTrace();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
