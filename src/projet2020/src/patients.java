@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import projet2020.src.Historique_mois;
 import projet2020.src.Historiquee_journee;
 import projet2020.src.ModifierP;
 import projet2020.src.SupprimerP;
@@ -446,6 +447,8 @@ public class patients extends javax.swing.JFrame {
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
         // Historique mois
+            new Historique_mois().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
